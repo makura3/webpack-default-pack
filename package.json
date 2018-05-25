@@ -1,0 +1,23 @@
+{
+  "name": "webpack-default-pack",
+  "version": "1.0.0",
+  "description": "webpackの基本的なloadersを詰め込んだ環境。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makura3/webpack-default-pack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makura3/webpack-default-pack/issues"
+  },
+  "homepage": "https://github.com/makura3/webpack-default-pack#readme",
+  "devDependencies": {
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4"
+  }
+}
