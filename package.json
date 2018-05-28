@@ -4,7 +4,8 @@
   "description": "webpackの基本的なloadersを詰め込んだ環境。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/makura3/webpack-default-pack#readme",
   "devDependencies": {
     "css-loader": "^0.28.11",
+    "ejs-loader": "^0.3.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

@@ -1,23 +1,32 @@
-import path from 'path'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+// import path from 'path'
+// import ExtractTextPlugin from 'extract-text-webpack-plugin'
+var path = require('path'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    glob = require("glob");
 
 module.exports = {
-  entry: './src/index.js',
+  //context: path.join(__dirname, 'src/scss'),
+  entry: {
+      style: glob.sync("./src/scss/*.scss")
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dest'),
+      path: path.join(__dirname, 'dist/css'),
+      filename: '[name].css'
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: [{loader: 'css-loader', options: {url: false}}, 'sass-loader'],
+          use: [{loader: 'css-loader', options: {url: false, minimize:true}}, 'sass-loader'],
         })
       }
     ],
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin({
+      filename: "[name].css",
+      allChunks: false
+    }),
   ],
 }
