@@ -17,7 +17,7 @@ module.exports = {
   // },
   entry: entries,
   output: {
-      path: path.join(__dirname, 'dist/css/'),
+      path: path.join(__dirname, 'src/css/'),
       filename: '[name].css'
   },
   module: {
