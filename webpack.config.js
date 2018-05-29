@@ -1,16 +1,23 @@
 // import path from 'path'
 // import ExtractTextPlugin from 'extract-text-webpack-plugin'
-var path = require('path'),
+const path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     glob = require("glob");
 
+const entries = {};
+glob.sync('./src/scss/**/*.scss').map(function(file) {
+  entries[file.replace(/\.[a-z]+$/, '')] = file;
+});
+
 module.exports = {
+  mode: 'development',
   //context: path.join(__dirname, 'src/scss'),
-  entry: {
-      style: glob.sync("./src/scss/*.scss")
-  },
+  // entry: {
+  //     style: glob.sync('./src/scss/**/*.scss')
+  // },
+  entry: entries,
   output: {
-      path: path.join(__dirname, 'dist/css'),
+      path: path.join(__dirname, 'dist/css/'),
       filename: '[name].css'
   },
   module: {
@@ -25,7 +32,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
       allChunks: false
     }),
   ],
