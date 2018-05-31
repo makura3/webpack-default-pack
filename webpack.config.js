@@ -5,7 +5,7 @@ const path = require('path'),
     glob = require("glob");
 
 const entries = {};
-glob.sync('./src/scss/!(_)**/!(_*.scss)').map(function(file) {
+glob.sync('./src/scss/!(^_**)/!(_*.scss)').map(function(file) {
   entries[file.replace(/\.[a-z]+$/, '')] = file;
   console.log(file);
 });
