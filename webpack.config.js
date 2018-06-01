@@ -4,11 +4,27 @@ const path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     glob = require("glob");
 
-const entries = {};
-glob.sync('./src/scss/!(_)**/!(_*.scss)').map(function(file) {
-  entries[file.replace(/\.[a-z]+$/, '')] = file;
+//ejsのコンパイル対象のファイルを抽出する。
+const entryFileList = {};
+glob.sync('./src/components/**/!(_*.ejs)').map(function(file) {
+  entryFileList[file.replace(/\.[a-z]+$/, '')] = file;
   console.log(file);
 });
+
+console.log('--------');
+
+//scssのコンパイル対象のファイルを抽出する。
+glob.sync('./src/scss/**/!(_*.scss)').map(function(file) {
+  entryFileList[file.replace(/\.[a-z]+$/, '')] = file;
+  console.log(file);
+});
+
+console.log('--------');
+for (key in entryFileList) {
+  console.log('key:' + key + ' value:' + entryFileList[key]);
+}
+//ディレクトリで切れているものを除外
+
 
 module.exports = {
   mode: 'development',
@@ -16,7 +32,7 @@ module.exports = {
   // entry: {
   //     style: glob.sync('./src/scss/**/*.scss')
   // },
-  entry: entries,
+  entry: entryFileList,
   output: {
       path: path.join(__dirname, 'src/css/'),
       filename: '[name].css'
