@@ -4,11 +4,11 @@ const path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     glob = require("glob");
 
+
 //ejsのコンパイル対象のファイルを抽出する。
 const entryFileList = {};
 glob.sync('./src/components/**/!(_*.ejs)').map(function(file) {
   entryFileList[file.replace(/\.[a-z]+$/, '')] = file;
-  console.log(file);
 });
 
 console.log('--------');
