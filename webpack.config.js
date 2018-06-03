@@ -30,22 +30,27 @@ const path = require('path'),
 
 // ディレクトリの設定
 const opts = {
-  srcDir: path.join(__dirname, 'site'),
-  destDir: path.join(__dirname, 'site/css')
+  srcDir: path.join(__dirname, 'src'),
+  destDir: path.join(__dirname, '/')
 }
 
-const convertExtensions = {
-  ejs: 'ejs',
-  scss: 'scss',
+const filePathList = {
+  ejs: '/',
+  scss: 'site/css/',
   js: 'js'
 }
 
 const entryFileList = {}
-Object.keys(convertExtensions).forEach(extension => {
+
+Object.keys(filePathList).forEach(extension => {
   globule.find([`**/*.${extension}`, `!**/_*.${extension}`], {cwd: opts.srcDir}).forEach(filename => {
-    console.log(filename);
-    console.log(extension);
-    entryFileList[filename.replace(new RegExp(`.${extension}$`, 'i'), '')] = path.join(opts.srcDir, filename)
+    if(extension == 'ejs') {
+      entryFileList[path.join(filePathList[extension], filename.replace(new RegExp(`.${extension}$`, 'i'), '.html').replace(new RegExp(`^components/`, 'i'), ''))] = path.join(opts.srcDir, filename)
+    } else if(extension == 'scss'){
+      entryFileList[path.join(filePathList[extension], filename.replace(new RegExp(`.${extension}$`, 'i'), '.css').replace(new RegExp(`^${extension}/`, 'i'), ''))] = path.join(opts.srcDir, filename)
+    } else {
+      entryFileList[filename.replace(new RegExp(`.${extension}$`, 'i'), '')] = path.join(opts.srcDir, filename)
+    }
   })
 })
 
@@ -54,17 +59,19 @@ console.log(entryFileList);
 
 module.exports = {
   mode: 'development',
-  //context: path.join(__dirname, 'src/scss'),
-  // entry: {
-  //     style: glob.sync('./src/scss/**/*.scss')
-  // },
   entry: entryFileList,
   output: {
-      path: path.join(__dirname, 'dist/'),
-      filename: '[name].css'
+    path: opts.destDir,
+    filename: '[name]'
   },
   module: {
     rules: [
+      {
+        test: /\.ejs$/,
+        use: ExtractTextPlugin.extract({
+          use: ['apply-loader', 'ejs-compiled-loader'],
+        })
+      },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
@@ -75,7 +82,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name].css',
+      filename: '[name]',
       allChunks: false
     }),
   ],
