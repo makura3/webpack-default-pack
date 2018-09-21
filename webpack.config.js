@@ -7,14 +7,12 @@ const opts = {
   destDir: path.join(__dirname, '/public')
 }
 
-const filePathList = {
-  scss: 'site/css/',
-  js: 'js'
-}
-
 module.exports = {
   mode: 'development',
-  entry: entryFileList,
+  entry: {
+    js: path.join(srcDir, 'hogehoge'),
+    style: path.join(srcDir, 'hugahuga'),
+  },
   output: {
     path: opts.destDir,
     filename: '[name]'
