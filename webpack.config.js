@@ -3,14 +3,14 @@ const path = require('path'),
 
 // ディレクトリの設定
 const opts = {
-  srcDir: path.join(__dirname, 'src'),
+  assetsDir: path.join(__dirname, 'src/assets'),
   destDir: path.join(__dirname, '/public')
 }
 
 module.exports = {
   mode: 'development',
   entry: {
-    js: path.join(srcDir, 'hogehoge'),
+    index: path.join(srcDir, 'hogehoge'),
     style: path.join(srcDir, 'hugahuga'),
   },
   output: {
