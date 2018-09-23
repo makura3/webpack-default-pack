@@ -4,7 +4,7 @@ const path = require('path'),
 // ディレクトリの設定
 const opts = {
   assetsDir: path.join(__dirname, 'src/assets'),
-  destDir: path.join(__dirname, '/public')
+  destDir: path.join(__dirname, '/public/assets')
 }
 
 module.exports = {
@@ -15,26 +15,48 @@ module.exports = {
   },
   output: {
     path: opts.destDir,
-    filename: '[name]'
+    filename: '[name].js'
   },
   module: {
     rules: [
       {
-        test: /\.ejs$/,
-        loader: 'ejs-compiled-loader'
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: [{loader: 'css-loader', options: {url: false, minimize:true}}, 'sass-loader'],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
+                minimize:true,
+                importLoaders: 2
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  require('autoprefixer')({gred: true})
+                ]
+              }
+            }, 'sass-loader'
+          ],
         })
       }
     ],
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name]',
-      allChunks: false
+      filename: '[name].css'
     }),
   ],
 }
