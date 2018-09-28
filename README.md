@@ -1,10 +1,17 @@
 # webpack-default-pack
 webpackの基本的なloadersを詰め込んだ環境。
 
-・jsのバンドル
-・cssの圧縮、吐き出し（jsと別ファイル化する）
+## Usage
 
-# Usage
+### ローカルサーバーの立ち上げ
 ```bash
-npm run build
+npx webpack-serve
 ```
+アクセス先：http://127.0.0.1:8080/
+
+### jsとcssのコンパイルおよびウォッチ
+```bash
+npm run start
+```
+
+TODO これ一つのコマンドにまとめたい

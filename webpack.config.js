@@ -1,20 +1,20 @@
-const path = require('path'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path')
+    // ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 
 // ディレクトリの設定
 const opts = {
   assetsDir: path.join(__dirname, 'src/assets'),
-  destDir: path.join(__dirname, '/public/assets')
+  distDir: path.join(__dirname, '/dist/assets')
 }
 
 module.exports = {
   mode: 'development',
   entry: {
-    index: path.join(srcDir, 'hogehoge'),
-    style: path.join(srcDir, 'hugahuga'),
+    index: path.join(opts.assetsDir, 'js/index.js')
   },
   output: {
-    path: opts.destDir,
+    path: opts.distDir,
     filename: '[name].js'
   },
   module: {
@@ -28,35 +28,37 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                url: false,
-                minimize:true,
-                importLoaders: 2
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: [
-                  require('autoprefixer')({gred: true})
-                ]
-              }
-            }, 'sass-loader'
-          ],
-        })
       }
+      // ,
+      // {
+      //   test: /\.scss$/,
+      //   use: ExtractTextPlugin.extract({
+      //     use: [
+      //       {
+      //         loader: 'css-loader',
+      //         options: {
+      //           url: false,
+      //           minimize:true,
+      //           importLoaders: 2
+      //         }
+      //       },
+      //       {
+      //         loader: 'postcss-loader',
+      //         options: {
+      //           plugins: [
+      //             require('autoprefixer')({grid: true})
+      //           ]
+      //         }
+      //       },
+      //       'sass-loader'],
+      //   })
+      // }
     ],
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: '[name].css'
-    }),
-  ],
+  }
+  // ,
+  // plugins: [
+  //   new ExtractTextPlugin({
+  //     filename: '[name].css'
+  //   }),
+  // ],
 }
