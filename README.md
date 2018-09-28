@@ -5,7 +5,7 @@ webpackの基本的なloadersを詰め込んだ環境。
 
 ### ローカルサーバーの立ち上げ、jsとcssのコンパイルおよびウォッチ
 ```bash
-npx webpack-serve
+npm run start
 ```
 
 アクセス先：http://127.0.0.1:8080/
