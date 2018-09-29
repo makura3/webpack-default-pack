@@ -1,0 +1,1 @@
+console.log('hoge用のjs');

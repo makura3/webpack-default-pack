@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/assets/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/hoge/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/assets/js/index.js":
-/*!********************************!*\
-  !*** ./src/assets/js/index.js ***!
-  \********************************/
+/***/ "./src/hoge/js/index.js":
+/*!******************************!*\
+  !*** ./src/hoge/js/index.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('aaaa');\n\n//# sourceURL=webpack:///./src/assets/js/index.js?");
+eval("console.log('hoge用のjs');\n\n//# sourceURL=webpack:///./src/hoge/js/index.js?");
 
 /***/ })
 

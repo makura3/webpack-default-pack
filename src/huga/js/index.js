@@ -1,0 +1,1 @@
+console.log('huga用のjs');

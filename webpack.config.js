@@ -1,18 +1,40 @@
 const path = require('path')
-    // ExtractTextPlugin = require('extract-text-webpack-plugin')
+const globule = require('globule')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries")
 
 
 // ディレクトリの設定
 const opts = {
-  assetsDir: path.join(__dirname, 'src/assets'),
-  distDir: path.join(__dirname, '/dist/assets')
+  srcDir: path.join(__dirname, 'src'),
+  assetsDir: path.join(__dirname, './src/assets'),
+  distDir: path.join(__dirname, './dist')
 }
+
+// エントリーファイルの抽出
+const filePathList = {
+  scss: 'css',
+  js: 'js'
+}
+
+const entryFileList = {}
+
+console.log('  ----- find file. -----  ');
+Object.keys(filePathList).forEach(extension => {
+  globule.find([`**/*.${extension}`, `!**/_*.${extension}`], {cwd: opts.srcDir}).forEach(filename => {
+    if(extension == 'scss') {
+      entryFileList[filename.replace(new RegExp(`.${extension}$`, 'i'), '').replace(`\/${extension}`, '/css')] = path.join(opts.srcDir, filename)
+    } else {
+      entryFileList[filename.replace(new RegExp(`.${extension}$`, 'i'), '')] = path.join(opts.srcDir, filename)
+    }
+  })
+})
+console.log(entryFileList);
+console.log('  ----------------------  ');
 
 module.exports = {
   mode: 'development',
-  entry: {
-    index: path.join(opts.assetsDir, 'js/index.js')
-  },
+  entry: entryFileList,
   output: {
     path: opts.distDir,
     filename: '[name].js'
@@ -29,36 +51,35 @@ module.exports = {
           }
         }
       }
-      // ,
-      // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract({
-      //     use: [
-      //       {
-      //         loader: 'css-loader',
-      //         options: {
-      //           url: false,
-      //           minimize:true,
-      //           importLoaders: 2
-      //         }
-      //       },
-      //       {
-      //         loader: 'postcss-loader',
-      //         options: {
-      //           plugins: [
-      //             require('autoprefixer')({grid: true})
-      //           ]
-      //         }
-      //       },
-      //       'sass-loader'],
-      //   })
-      // }
+      ,
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              minimize:true,
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({grid: true})
+              ]
+            }
+          },
+          'sass-loader'],
+      }
     ],
-  }
-  // ,
-  // plugins: [
-  //   new ExtractTextPlugin({
-  //     filename: '[name].css'
-  //   }),
-  // ],
+  },
+  plugins: [
+    new FixStyleOnlyEntriesPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash:8].css',
+    })
+  ]
 }
