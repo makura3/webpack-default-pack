@@ -83,7 +83,7 @@ module.exports = {
   plugins: [
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash:8].css',
+      filename: '[name].css',
     })
     // ,
     // new HtmlWebpackPlugin()
