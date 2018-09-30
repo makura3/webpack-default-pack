@@ -2,6 +2,7 @@ const path = require('path')
 const globule = require('globule')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries")
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 // ディレクトリの設定
@@ -50,8 +51,7 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      }
-      ,
+      },
       {
         test: /\.scss$/,
         use: [
@@ -73,6 +73,10 @@ module.exports = {
             }
           },
           'sass-loader'],
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ],
   },
@@ -81,5 +85,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash:8].css',
     })
+    // ,
+    // new HtmlWebpackPlugin()
   ]
 }

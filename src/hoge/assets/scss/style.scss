@@ -1,0 +1,9 @@
+@import "./_shared/variables";
+
+a {
+  content: 'これはhogeのLP用SCSSです';
+}
+
+h1 {
+  color: $white;
+}

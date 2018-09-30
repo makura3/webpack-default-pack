@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/huga/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/huga/assets/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/huga/js/index.js":
-/*!******************************!*\
-  !*** ./src/huga/js/index.js ***!
-  \******************************/
+/***/ "./src/huga/assets/js/index.js":
+/*!*************************************!*\
+  !*** ./src/huga/assets/js/index.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('huga用のjs');\n\n//# sourceURL=webpack:///./src/huga/js/index.js?");
+eval("console.log('huga用のjs');\n\n//# sourceURL=webpack:///./src/huga/assets/js/index.js?");
 
 /***/ })
 
