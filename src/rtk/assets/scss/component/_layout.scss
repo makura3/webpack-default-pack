@@ -1,0 +1,26 @@
+.layout-container {
+  flex: 1;
+
+  &__inner {
+    margin: auto;
+    position: relative;
+    width: 1200px;
+  }
+
+  &__bg-image {
+    background: url("/rtk/assets/images/mask.png");
+    background-size: contain;
+    padding: 84px;
+    position: relative;
+  }
+
+  &__bg-white {
+    background-color: $white-1;
+    padding: 84px 0;
+  }
+
+  &__bg-darkgray {
+    background-color: $gray-6;
+    padding: 84px;
+  }
+}

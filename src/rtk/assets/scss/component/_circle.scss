@@ -1,0 +1,24 @@
+.circle-intro {
+  background-color: $gray-2;
+  border-radius: 50%;
+  height: 200px;
+  position: absolute;
+  right: 150px;
+  text-align: center;
+  top: -40px;
+  width: 200px;
+
+  &__text {
+    font-size: 2.4rem;
+  }
+
+  &__bold {
+    font-size: 3.6rem;
+    font-weight: bold;
+  }
+
+  &__large {
+    font-size: 3.6rem;
+    font-weight: normal;
+  }
+}

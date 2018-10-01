@@ -1,0 +1,13 @@
+.title {
+  color: $black-1;
+  font-size: 4rem;
+  text-align: center;
+
+  &.title-main {
+    color: $white-1;
+    font-size: 3.6rem;
+    font-weight: normal;
+    line-height: 1.4;
+    text-align: left;
+  }
+}
