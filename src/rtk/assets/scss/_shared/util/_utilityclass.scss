@@ -1,0 +1,198 @@
+//=============================================================================
+//  utility CLASS
+//=============================================================================
+
+.is-hide {
+  display: none;
+}
+
+.is-block {
+  display: block;
+}
+
+.is-relative {
+  position: relative;
+}
+
+$propertylist: top, bottom;
+@each $property in $propertylist {
+  .c-border__#{$property} {
+    // .c-border__top
+    border-#{$property}: 1px solid #ddd;
+  }
+}
+
+// ------------------------------------------------------
+// font
+// ------------------------------------------------------
+$font-min: 8;
+$font-max: 30;
+@for $i from $font-min through $font-max {
+  .c-font__size#{$i} {
+    // .c-font__size16
+    font-size: ($i / 10) + rem !important;
+  }
+}
+
+.c-font__bold {
+  font-weight: bold;
+}
+
+.c-font__normal {
+  font-weight: normal;
+}
+
+.c-align__center {
+  text-align: center;
+}
+
+.c-align__right {
+  text-align: right;
+}
+
+.c-align__left {
+  text-align: left;
+}
+
+.f-align_center {
+  align-items: center !important;
+}
+
+$flex-grow-min: 1;
+$flex-grow-max: 10;
+@for $i from $flex-grow-min through $flex-grow-max {
+  .flex#{$i} {
+    flex: $i;
+  }
+}
+
+// ------------------------------------------------------
+// px 単位での padding, margin 調整用class
+// ------------------------------------------------------
+// 指定するmarginの範囲を定義
+$adjust-min: 0;
+$adjust-max: 120;
+@for $i from $adjust-min through $adjust-max {
+  .mt#{$i}px {
+    margin-top: #{$i}px !important;
+  }
+
+  .mr#{$i}px {
+    margin-right: #{$i}px !important;
+  }
+
+  .mb#{$i}px {
+    margin-bottom: #{$i}px !important;
+  }
+
+  .ml#{$i}px {
+    margin-left: #{$i}px !important;
+  }
+
+  .mrl#{$i}px {
+    margin-left: #{$i}px !important;
+    margin-right: #{$i}px !important;
+  }
+
+  .mtb#{$i}px {
+    margin-bottom: #{$i}px !important;
+    margin-top: #{$i}px !important;
+  }
+
+  .mAll#{$i}px {
+    margin: #{$i}px !important;
+  }
+
+  .pt#{$i}px {
+    padding-top: #{$i}px !important;
+  }
+
+  .pr#{$i}px {
+    padding-right: #{$i}px !important;
+  }
+
+  .pb#{$i}px {
+    padding-bottom: #{$i}px !important;
+  }
+
+  .pl#{$i}px {
+    padding-left: #{$i}px !important;
+  }
+
+  .prl#{$i}px {
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
+  }
+
+  .ptb#{$i}px {
+    padding-bottom: #{$i}px !important;
+    padding-top: #{$i}px !important;
+  }
+
+  .pAll#{$i}px {
+    padding: #{$i}px !important;
+  }
+}
+
+$base: 750;
+@for $i from $adjust-min through $adjust-max {
+  .mt#{$i}per {
+    margin-top: percentage($i / $base) !important;
+  }
+
+  .mr#{$i}per {
+    margin-right: percentage($i / $base) !important;
+  }
+
+  .mb#{$i}per {
+    margin-bottom: percentage($i / $base) !important;
+  }
+
+  .ml#{$i}per {
+    margin-left: percentage($i / $base) !important;
+  }
+
+  .mrl#{$i}per {
+    margin-left: percentage($i / $base) !important;
+    margin-right: percentage($i / $base) !important;
+  }
+
+  .mtb#{$i}per {
+    margin-bottom: percentage($i / $base) !important;
+    margin-top: percentage($i / $base) !important;
+  }
+
+  .mAll#{$i}per {
+    margin: percentage($i / $base) !important;
+  }
+
+  .pt#{$i}per {
+    padding-top: percentage($i / $base) !important;
+  }
+
+  .pr#{$i}per {
+    padding-right: percentage($i / $base) !important;
+  }
+
+  .pb#{$i}per {
+    padding-bottom: percentage($i / $base) !important;
+  }
+
+  .pl#{$i}per {
+    padding-left: percentage($i / $base) !important;
+  }
+
+  .prl#{$i}per {
+    padding-left: percentage($i / $base) !important;
+    padding-right: percentage($i / $base) !important;
+  }
+
+  .ptb#{$i}per {
+    padding-bottom: percentage($i / $base) !important;
+    padding-top: percentage($i / $base) !important;
+  }
+
+  .pAll#{$i}per {
+    padding: percentage($i / $base) !important;
+  }
+}

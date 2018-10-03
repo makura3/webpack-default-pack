@@ -1,0 +1,56 @@
+.card-flex {
+  display: flex;
+}
+
+.card-main {
+  width: 680px;
+
+  &__title {
+    line-height: 1.8;
+  }
+
+  &__text {
+    color: $white-1;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+
+  &__button {
+    display: flex;
+  }
+}
+
+.card-reason {
+  background-color: $gray-5;
+  padding: 40px 24px 24px;
+  width: 460px;
+
+  &__inner {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 2.4rem;
+    margin-top: 3.2rem;
+  }
+
+  &__text {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    text-align: right;
+
+    > a {
+      color: $black-1;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+}

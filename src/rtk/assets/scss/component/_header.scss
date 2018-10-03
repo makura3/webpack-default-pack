@@ -1,0 +1,36 @@
+.layout-header {
+  margin: auto;
+  width: 1200px;
+
+  &__inner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  &__link {
+    color: $black-1;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__input {
+    border: 1px solid $gray-2;
+    border-radius: 3px;
+    padding: 0.8rem;
+    padding-right: 3rem;
+    width: 208px;
+
+    &--image {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+    }
+  }
+}
